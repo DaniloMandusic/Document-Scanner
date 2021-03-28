@@ -2,6 +2,7 @@ import cv2
 import img2pdf as img2pdf
 import numpy as np
 import pytesseract as pytesseract
+import pyttsx3
 
 import mapper
 
@@ -62,3 +63,7 @@ pdf = img2pdf.convert("Test_dst.jpg")
 file = open("newfile.pdf","wb")
 file.write(pdf)
 file.close()
+
+engine = pyttsx3.init()
+engine.say(string)
+engine.runAndWait()
