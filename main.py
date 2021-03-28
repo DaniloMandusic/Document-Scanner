@@ -1,5 +1,7 @@
 import cv2
 import numpy as np
+import pytesseract as pytesseract
+
 import mapper
 
 #name your picture
@@ -47,3 +49,8 @@ dst = cv2.cvtColor(dst, cv2.COLOR_BGR2GRAY)
 
 cv2.imshow("dst.jpg", dst)
 cv2.waitKey(0)
+
+pytesseract.pytesseract.tesseract_cmd = 'C:\\Python38\\Tesseract\\tesseract.exe'
+
+print(pytesseract.image_to_string(dst))
+cv2.imwrite('Test_dst.jpg', dst)
