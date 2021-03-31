@@ -1,6 +1,7 @@
 venv
 .idea
-1.jpg
+Pictures/1.jpg
 __pycache__
-Test_dst.jpg
+Pictures/Test_dst.jpg
 newfile.pdf
+Pictures
