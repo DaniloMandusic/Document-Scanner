@@ -10,9 +10,15 @@ import ConvertToPdf
 import TextToVoice
 import OrderByLecture
 from tkinter import *
+import subprocess
 #import utlis
 
 #design for desktop app
+
+#function that opens folder
+def open_add_folder():
+    subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner\\pictures"')
+
 
 #start of desktop design
 app = Tk()
@@ -24,11 +30,13 @@ app = Tk()
 # part_entry = Entry(app, textvariable = part_text)
 # part_entry.grid(row = 0, column = 1)
 
-add_btn = Button(app, text='Add Part', border=0)
+#button for adding pictures for scanning
+add_btn = Button(app, text='Add Part', border=0, command = open_add_folder)
 img0 = PhotoImage(file="Button Pictures/button_add.png")
 add_btn.config(image=img0)
 add_btn.grid(row=0, column=0, pady=20)
 
+#button for processing pictures
 scan_btn = Button(app, text='Add Part', border=0)
 img1 = PhotoImage(file="Button Pictures/button_process-pictures.png")
 scan_btn.config(image=img1)
