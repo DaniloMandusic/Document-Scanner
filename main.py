@@ -9,13 +9,63 @@ import ReadFromPicture
 import ConvertToPdf
 import TextToVoice
 import OrderByLecture
+from tkinter import *
 #import utlis
 
-dst = ScanPicture.scanPicture('C:/Users/danilo/PycharmProjects/DocumentScanner/Pictures/1.jpg')
-text = ReadFromPicture.readFromPicture(dst)
-#TextToVoice.textToVoice(text)
-#ConvertToPdf.convertToPdf(dst)
-OrderByLecture.orderByLecture()
+#design for desktop app
+
+#start of desktop design
+app = Tk()
+
+#part
+# part_text = StringVar()
+# part_label = Label(app, text = 'Part name', font = ('bold',14), pady = 20, padx = 20)
+# part_label.grid(row = 0, column = 0)
+# part_entry = Entry(app, textvariable = part_text)
+# part_entry.grid(row = 0, column = 1)
+
+add_btn = Button(app, text='Add Part', border=0)
+img0 = PhotoImage(file="Button Pictures/button_add.png")
+add_btn.config(image=img0)
+add_btn.grid(row=0, column=0, pady=20)
+
+scan_btn = Button(app, text='Add Part', border=0)
+img1 = PhotoImage(file="Button Pictures/button_process-pictures.png")
+scan_btn.config(image=img1)
+scan_btn.grid(row=0, column=1, pady=20)
+
+convert_btn = Button(app, text='Add Part', border=0)
+img2 = PhotoImage(file="Button Pictures/button_convert-to-pdf.png")
+convert_btn.config(image=img2)
+convert_btn.grid(row=0, column=2, pady=20)
+
+read_btn = Button(app, text='Add Part', border=0)
+img3 = PhotoImage(file="Button Pictures/button_read-from-pictures.png")
+read_btn.config(image=img3)
+read_btn.grid(row=1, column=0, pady=20)
+
+speech_btn = Button(app, text='Add Part', border=0)
+img4 = PhotoImage(file="Button Pictures/button_text-to-speech.png")
+speech_btn.config(image=img4)
+speech_btn.grid(row=1, column=1, pady=20)
+
+order_btn = Button(app, text='Add Part', border=0)
+img5 = PhotoImage(file="Button Pictures/button_order-by-lectures.png")
+order_btn.config(image=img5)
+order_btn.grid(row=1, column=2, pady=20)
+
+app.title('Document Scanner')
+app.geometry("1000x300")
+
+#start program
+app.mainloop()
+
+
+# dst = ScanPicture.scanPicture('C:/Users/danilo/PycharmProjects/DocumentScanner/Pictures/1.jpg')
+# text = ReadFromPicture.readFromPicture(dst)
+# #TextToVoice.textToVoice(text)
+# #ConvertToPdf.convertToPdf(dst)
+# OrderByLecture.orderByLecture()
 
 #name your picture
 # image = cv2.imread('1.jpg')
