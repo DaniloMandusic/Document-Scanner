@@ -11,13 +11,32 @@ import TextToVoice
 import OrderByLecture
 from tkinter import *
 import subprocess
-#import utlis
+import os
 
 #design for desktop app
 
 #function that opens folder
 def open_add_folder():
     subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner\\pictures"')
+
+#function that processes pictures and opens folder with processed pictures
+def process_pictures():
+    picturesPath = r"C:\Users\danilo\PycharmProjects\DocumentScanner1\Pictures"
+
+    imgNameCounter = 0
+    p1 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Pictures/"
+    p2 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Scanned Pictures/"
+    picturesArray = []
+    # for all pictures in folder with all pictures
+    for p in os.listdir(picturesPath):
+        # p is name of picture
+        input_path = p1 + p
+        dst = ScanPicture.scanPicture(input_path)
+
+        cv2.imwrite(p2 + "/img" + str(imgNameCounter) + ".jpg",dst)
+        imgNameCounter += 1
+
+    subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner1\\scanned pictures"')
 
 
 #start of desktop design
@@ -37,7 +56,7 @@ add_btn.config(image=img0)
 add_btn.grid(row=0, column=0, pady=20)
 
 #button for processing pictures
-scan_btn = Button(app, text='Add Part', border=0)
+scan_btn = Button(app, text='Add Part', border=0, command = process_pictures)
 img1 = PhotoImage(file="Button Pictures/button_process-pictures.png")
 scan_btn.config(image=img1)
 scan_btn.grid(row=0, column=1, pady=20)
