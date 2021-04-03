@@ -13,8 +13,8 @@ import OrderByLecture
 
 dst = ScanPicture.scanPicture('C:/Users/danilo/PycharmProjects/DocumentScanner/Pictures/1.jpg')
 text = ReadFromPicture.readFromPicture(dst)
-TextToVoice.textToVoice(text)
-ConvertToPdf.convertToPdf(dst)
+#TextToVoice.textToVoice(text)
+#ConvertToPdf.convertToPdf(dst)
 OrderByLecture.orderByLecture()
 
 #name your picture

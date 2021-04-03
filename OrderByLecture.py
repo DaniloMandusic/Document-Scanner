@@ -44,7 +44,7 @@ def orderByLecture():
     lectureTexts = []
 
     outPath = "C:\Miniconda\envs\.."
-    picturesPath = r"C:\Users\danilo\PycharmProjects\DocumentScanner\Pictures"
+    picturesPath = r"C:\Users\danilo\PycharmProjects\DocumentScanner1\Pictures"
 
     # iterate through the names of contents of the folder
     # for image_path in os.listdir(path):
@@ -60,8 +60,8 @@ def orderByLecture():
     #     fullpath = os.path.join(outPath, 'rotated_' + image_path)
     #     misc.imsave(fullpath, rotated)
     imgNameCounter = 0
-    p1 = "C:/Users/danilo/PycharmProjects/DocumentScanner/Pictures/"
-    p2 = "C:/Users/danilo/PycharmProjects/DocumentScanner/Lectures/"
+    p1 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Pictures/"
+    p2 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Lectures/"
     picturesArray = []
     #for all pictures in folder with all pictures
     for p in os.listdir(picturesPath):
@@ -89,7 +89,7 @@ def orderByLecture():
         cv2.imshow("a",picturesArray[lectureTexts.index(text)])
         cv2.waitKey(0)
 
-        testPath = "C:/Users/danilo/PycharmProjects/DocumentScanner/Lectures/45"
+        testPath = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Lectures/45"
         cv2.imwrite(p2 + lectures[maxNumIndex] +"/img" + str(imgNameCounter) + ".jpg", picturesArray[lectureTexts.index(text)])
         imgNameCounter += 1
     #########################end ofsorting lectures to folders############################
