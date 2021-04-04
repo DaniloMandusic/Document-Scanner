@@ -38,6 +38,24 @@ def process_pictures():
 
     subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner1\\scanned pictures"')
 
+#function that exports all images to pdf files
+def export_to_pdf():
+    picturesPath = r"C:\Users\danilo\PycharmProjects\DocumentScanner1\Pictures"
+
+    imgNameCounter = 0
+    p1 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Pictures/"
+    p2 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Pdfs/"
+    picturesArray = []
+    # for all pictures in folder with all pictures
+    for p in os.listdir(picturesPath):
+        # p is name of picture
+        input_path = p1 + p
+        dst = ScanPicture.scanPicture(input_path)
+        ConvertToPdf.convertToPdf(dst,imgNameCounter)
+        #cv2.imwrite(p2 + "/img" + str(imgNameCounter) + ".jpg", dst)
+        imgNameCounter += 1
+
+    subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner1\\Pdfs"')
 
 #start of desktop design
 app = Tk()
@@ -61,11 +79,13 @@ img1 = PhotoImage(file="Button Pictures/button_process-pictures.png")
 scan_btn.config(image=img1)
 scan_btn.grid(row=0, column=1, pady=20)
 
-convert_btn = Button(app, text='Add Part', border=0)
+#convert to pfd button
+convert_btn = Button(app, text='Add Part', border=0, command = export_to_pdf)
 img2 = PhotoImage(file="Button Pictures/button_convert-to-pdf.png")
 convert_btn.config(image=img2)
 convert_btn.grid(row=0, column=2, pady=20)
 
+#read from pictures button
 read_btn = Button(app, text='Add Part', border=0)
 img3 = PhotoImage(file="Button Pictures/button_read-from-pictures.png")
 read_btn.config(image=img3)

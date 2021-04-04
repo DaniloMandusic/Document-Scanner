@@ -8,3 +8,7 @@ Pictures
 Lectures
 Scanned Pictures/*
 !Scanned Pictures/.gitkeep
+PicturesTmp/*
+!PicturesTmp/.gitkeep
+Pdfs/*
+!Pdfs/.gitkeep
