@@ -57,6 +57,7 @@ def export_to_pdf():
 
     subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner1\\Pdfs"')
 
+#function that read all files from pictures and put them in one text document
 def read_from_pictures():
     picturesPath = r"C:\Users\danilo\PycharmProjects\DocumentScanner1\Pictures"
 
@@ -78,6 +79,22 @@ def read_from_pictures():
     txtFile.close()
 
     subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner1\\Text From Images"')
+
+#text to speech function for button
+def text_to_speech():
+    picturesPath = r"C:\Users\danilo\PycharmProjects\DocumentScanner1\Pictures"
+
+    p1 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Pictures/"
+    # for all pictures in folder with all pictures
+    text = ""
+
+    for p in os.listdir(picturesPath):
+        # p is name of picture
+        input_path = p1 + p
+        dst = ScanPicture.scanPicture(input_path)
+        text += ReadFromPicture.readFromPicture(dst)
+
+    TextToVoice.textToVoice(text)
 
 #start of desktop design
 app = Tk()
@@ -113,7 +130,8 @@ img3 = PhotoImage(file="Button Pictures/button_read-from-pictures.png")
 read_btn.config(image=img3)
 read_btn.grid(row=1, column=0, pady=20)
 
-speech_btn = Button(app, text='Add Part', border=0)
+#text to speech button
+speech_btn = Button(app, text='Add Part', border=0, command = text_to_speech)
 img4 = PhotoImage(file="Button Pictures/button_text-to-speech.png")
 speech_btn.config(image=img4)
 speech_btn.grid(row=1, column=1, pady=20)
