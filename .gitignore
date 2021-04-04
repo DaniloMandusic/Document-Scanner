@@ -12,3 +12,5 @@ PicturesTmp/*
 !PicturesTmp/.gitkeep
 Pdfs/*
 !Pdfs/.gitkeep
+Text From Images/*
+!Text From Images/.gitkeep

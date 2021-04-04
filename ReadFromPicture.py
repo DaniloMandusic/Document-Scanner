@@ -7,7 +7,7 @@ import pytesseract
 def readFromPicture(dst):
     pytesseract.pytesseract.tesseract_cmd = 'C:\\Python38\\Tesseract\\tesseract.exe'
 
-    print(pytesseract.image_to_string(dst))
+    #print(pytesseract.image_to_string(dst))
     return pytesseract.image_to_string(dst)
     #cv2.imwrite('Test_dst.jpg', dst)
 

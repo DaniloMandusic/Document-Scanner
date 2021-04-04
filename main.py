@@ -57,6 +57,28 @@ def export_to_pdf():
 
     subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner1\\Pdfs"')
 
+def read_from_pictures():
+    picturesPath = r"C:\Users\danilo\PycharmProjects\DocumentScanner1\Pictures"
+
+    imgNameCounter = 0
+    p1 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Pictures/"
+    p2 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Pdfs/"
+    picturesArray = []
+    # for all pictures in folder with all pictures
+    text = ""
+
+    for p in os.listdir(picturesPath):
+        # p is name of picture
+        input_path = p1 + p
+        dst = ScanPicture.scanPicture(input_path)
+        text += ReadFromPicture.readFromPicture(dst)
+
+    txtFile = open("Text From Images\\text.txt","w")
+    txtFile.write(text)
+    txtFile.close()
+
+    subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner1\\Text From Images"')
+
 #start of desktop design
 app = Tk()
 
@@ -86,7 +108,7 @@ convert_btn.config(image=img2)
 convert_btn.grid(row=0, column=2, pady=20)
 
 #read from pictures button
-read_btn = Button(app, text='Add Part', border=0)
+read_btn = Button(app, text='Add Part', border=0, command = read_from_pictures)
 img3 = PhotoImage(file="Button Pictures/button_read-from-pictures.png")
 read_btn.config(image=img3)
 read_btn.grid(row=1, column=0, pady=20)
