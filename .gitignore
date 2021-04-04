@@ -5,7 +5,8 @@ __pycache__
 Pictures/Test_dst.jpg
 newfile.pdf
 Pictures
-Lectures
+Lectures/*
+!Lectures/.gitkeep
 Scanned Pictures/*
 !Scanned Pictures/.gitkeep
 PicturesTmp/*

@@ -10,6 +10,7 @@ import ConvertToPdf
 import TextToVoice
 import OrderByLecture
 from tkinter import *
+from tkinter import messagebox
 import subprocess
 import os
 
@@ -17,7 +18,7 @@ import os
 
 #function that opens folder
 def open_add_folder():
-    subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner\\pictures"')
+    subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner1\\pictures"')
 
 #function that processes pictures and opens folder with processed pictures
 def process_pictures():
@@ -99,6 +100,64 @@ def text_to_speech():
 #start of desktop design
 app = Tk()
 
+#function for order by lecture button
+def order_by_lecture():
+    newWindow = Toplevel(app)
+
+    lectures_array = []
+
+    def populate_list():
+        lectures_list.delete(0, END)
+        for lecture in lectures_array:
+            lectures_list.insert(END, lecture)
+
+    def add_item():
+        if price_text.get() == '':
+            messagebox.showerror('Required Fields', 'Please include all fields')
+            return
+        lectures_array.append(price_text.get())
+        lectures_list.insert(END, price_text.get())
+
+        lectures_entry.delete(0,END)
+
+    def remove_item():
+        lectures_array.remove(price_text.get())
+        lectures_entry.delete(0,END)
+        populate_list()
+
+    def order():
+        OrderByLecture.orderByLecture(lectures_array)
+        subprocess.Popen('explorer "C:\\Users\\danilo\\pycharmprojects\\documentscanner1\\Lectures"')
+
+    # sets the title of the
+    # Toplevel widget
+    newWindow.title("Order by lectures")
+
+    # sets the geometry of toplevel
+    newWindow.geometry("350x320")
+
+    price_text = StringVar()
+    #first entry
+    lectures_entry = Entry(newWindow, textvariable = price_text)
+    lectures_entry.grid(row = 0, column = 0, pady = 20, padx = 20)
+    #add button
+    add_btn = Button(newWindow, text='Add lecture', command = add_item)
+    add_btn.grid(row=1, column=0, pady=20)
+    #remove button
+    remove_btn = Button(newWindow, text='Remove lecture', command = remove_item)
+    remove_btn.grid(row=1, column=1, pady=20)
+    #process button
+    process_btn = Button(newWindow, text='Proceed', command = order)
+    process_btn.grid(row=0, column=1, pady=20)
+    #lectures_list
+    lectures_list = Listbox(newWindow, height = 8, width = 50)
+    lectures_list.grid(row = 2, column = 0, columnspan = 3, rowspan = 6, pady = 20, padx = 20)
+    scrollbar = Scrollbar(newWindow)
+    scrollbar.grid(row=2, column=3)
+    # Set scroll to listbox
+    lectures_list.configure(yscrollcommand=scrollbar.set)
+    scrollbar.configure(command=lectures_list.yview)
+
 #part
 # part_text = StringVar()
 # part_label = Label(app, text = 'Part name', font = ('bold',14), pady = 20, padx = 20)
@@ -136,7 +195,7 @@ img4 = PhotoImage(file="Button Pictures/button_text-to-speech.png")
 speech_btn.config(image=img4)
 speech_btn.grid(row=1, column=1, pady=20)
 
-order_btn = Button(app, text='Add Part', border=0)
+order_btn = Button(app, text='Add Part', border=0, command = order_by_lecture)
 img5 = PhotoImage(file="Button Pictures/button_order-by-lectures.png")
 order_btn.config(image=img5)
 order_btn.grid(row=1, column=2, pady=20)
@@ -146,7 +205,6 @@ app.geometry("1000x300")
 
 #start program
 app.mainloop()
-
 
 # dst = ScanPicture.scanPicture('C:/Users/danilo/PycharmProjects/DocumentScanner/Pictures/1.jpg')
 # text = ReadFromPicture.readFromPicture(dst)

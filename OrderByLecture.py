@@ -3,20 +3,21 @@ import cv2
 import ReadFromPicture
 import ScanPicture
 
-def orderByLecture():
+def orderByLecture(lectures):
 
     ####################creating folders for lectures##################
-    lectures = []
+    #lectures = []
 
-    while True:
-        lecture = input("Name of lecture?")
-        if(lecture == ""):
-            break
-        else:
-            lectures.append(lecture)
+    # while True:
+    #     lecture = input("Name of lecture?")
+    #     if(lecture == ""):
+    #         break
+    #     else:
+    #         lectures.append(lecture)
 
     for l in lectures:
-        print(l)
+        l = l.lower()
+        #print(l)
 
     path = os.getcwd()
     path = path + "/Lectures"
@@ -43,7 +44,6 @@ def orderByLecture():
     #########################sorting lectures to folders############################
     lectureTexts = []
 
-    outPath = "C:\Miniconda\envs\.."
     picturesPath = r"C:\Users\danilo\PycharmProjects\DocumentScanner1\Pictures"
 
     # iterate through the names of contents of the folder
@@ -71,7 +71,7 @@ def orderByLecture():
         text = ReadFromPicture.readFromPicture(dst)
 
         picturesArray.append(dst)
-        lectureTexts.append(text)
+        lectureTexts.append(text.lower())
 
     for text in lectureTexts:
         maxNum = 0
@@ -84,12 +84,11 @@ def orderByLecture():
                 maxNum = numOfMatches
                 maxNumIndex = lectures.index(l)
 
-        print(p2 + lectures[maxNumIndex] +"/img" + str(imgNameCounter) + "," + str(lectureTexts.index(text)) + " goes into lecture " + lectures[maxNumIndex])
+        # print(p2 + lectures[maxNumIndex] +"/img" + str(imgNameCounter) + "," + str(lectureTexts.index(text)) + " goes into lecture " + lectures[maxNumIndex])
         # order pictures in right folders with appropriate names
-        cv2.imshow("a",picturesArray[lectureTexts.index(text)])
-        cv2.waitKey(0)
+        # cv2.imshow("a",picturesArray[lectureTexts.index(text)])
+        # cv2.waitKey(0)
 
-        testPath = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Lectures/45"
         cv2.imwrite(p2 + lectures[maxNumIndex] +"/img" + str(imgNameCounter) + ".jpg", picturesArray[lectureTexts.index(text)])
         imgNameCounter += 1
     #########################end ofsorting lectures to folders############################
