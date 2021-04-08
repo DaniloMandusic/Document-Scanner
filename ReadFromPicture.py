@@ -9,6 +9,3 @@ def readFromPicture(dst):
 
     #print(pytesseract.image_to_string(dst))
     return pytesseract.image_to_string(dst)
-    #cv2.imwrite('Test_dst.jpg', dst)
-
-    #string = pytesseract.image_to_string(dst)

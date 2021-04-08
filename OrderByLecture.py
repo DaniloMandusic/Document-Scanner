@@ -6,14 +6,6 @@ import ScanPicture
 def orderByLecture(lectures):
 
     ####################creating folders for lectures##################
-    #lectures = []
-
-    # while True:
-    #     lecture = input("Name of lecture?")
-    #     if(lecture == ""):
-    #         break
-    #     else:
-    #         lectures.append(lecture)
 
     for l in lectures:
         l = l.lower()
@@ -46,19 +38,6 @@ def orderByLecture(lectures):
 
     picturesPath = r"C:\Users\danilo\PycharmProjects\DocumentScanner1\Pictures"
 
-    # iterate through the names of contents of the folder
-    # for image_path in os.listdir(path):
-    #     # create the full input path and read the file
-    #     input_path = os.path.join(path, image_path)
-    #     image_to_rotate = ndimage.imread(input_path)
-    #
-    #     # rotate the image
-    #     rotated = ndimage.rotate(image_to_rotate, 45)
-    #
-    #     # create full output path, 'example.jpg'
-    #     # becomes 'rotate_example.jpg', save the file to disk
-    #     fullpath = os.path.join(outPath, 'rotated_' + image_path)
-    #     misc.imsave(fullpath, rotated)
     imgNameCounter = 0
     p1 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Pictures/"
     p2 = "C:/Users/danilo/PycharmProjects/DocumentScanner1/Lectures/"
@@ -83,11 +62,6 @@ def orderByLecture(lectures):
             if(maxNum < numOfMatches):
                 maxNum = numOfMatches
                 maxNumIndex = lectures.index(l)
-
-        # print(p2 + lectures[maxNumIndex] +"/img" + str(imgNameCounter) + "," + str(lectureTexts.index(text)) + " goes into lecture " + lectures[maxNumIndex])
-        # order pictures in right folders with appropriate names
-        # cv2.imshow("a",picturesArray[lectureTexts.index(text)])
-        # cv2.waitKey(0)
 
         cv2.imwrite(p2 + lectures[maxNumIndex] +"/img" + str(imgNameCounter) + ".jpg", picturesArray[lectureTexts.index(text)])
         imgNameCounter += 1

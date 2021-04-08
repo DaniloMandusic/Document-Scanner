@@ -68,8 +68,8 @@ def scanPicture(nameOfPicture):
     # cv2.imshow("Thresh mean.jpg", th2)
     # cv2.imshow("Thresh gauss.jpg", th3)
     # cv2.imshow("Otsu's.jpg", th4)
-    #cv2.imshow("dst.jpg", dst)
-    #cv2.waitKey(0)
+    # cv2.imshow("dst.jpg", dst)
+    # cv2.waitKey(0)
 
     return dst
     # other thresholding methods
