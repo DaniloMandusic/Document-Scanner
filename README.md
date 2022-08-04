@@ -17,13 +17,3 @@ Document Scanner project made for 🚀 To The Moon coding competition.
 **Text to Speech** - reads text from image and convert it to speech
 
 **Order by Lecture** - uses the algorithm that orders images by lectures and export them to folders, opens folder with ordered lectures
-
-## Installation
-1.git clone repository
-
-2.install all imported libraries
-
-3.run main.py script
-
-### Enjoy,
-### Danilo Mandusic
